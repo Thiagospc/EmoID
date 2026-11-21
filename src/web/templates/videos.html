@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Vídeos - EmoID{% endblock %}
+
+{% block content %}
+<h2 class="text-3xl font-bold text-gray-800 mb-6">📹 Vídeos Gravados</h2>
+
+{% if videos %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for v in videos|sort(attribute='data_dt', reverse=True) %}
+    <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
+        <h3 class="text-lg font-semibold text-gray-800 mb-3 break-all">{{ v.nome }}</h3>
+        <div class="space-y-1 text-sm text-gray-600 mb-4">
+            <p>📅 {{ v.data }}</p>
+            <p>⏱️ {{ "%.1f"|format(v.duracao) }}s</p>
+            <p>📊 {{ v.registros }} registros</p>
+        </div>
+        <a href="/aula/{{ v.nome }}" class="inline-block w-full text-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition">
+            Ver Detalhes
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="bg-white rounded-xl shadow-md p-12 text-center">
+    <p class="text-gray-400 italic text-lg">Nenhum vídeo gravado ainda.</p>
+</div>
+{% endif %}
+{% endblock %}

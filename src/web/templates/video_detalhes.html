@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Vídeo - EmoID{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-3xl font-bold text-gray-800">🎬 {{ nome_arquivo }}</h2>
+        <a href="/videos" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition">
+            ← Voltar
+        </a>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md p-4 md:p-6">
+        <video controls autoplay class="w-full rounded-lg bg-black" playsinline>
+            <source src="{{ video_url }}" type="video/mp4">
+            Seu navegador não suporta reprodução de vídeo.
+        </video>
+    </div>
+</div>
+{% endblock %}

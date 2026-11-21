@@ -1,0 +1,7 @@
+venv/
+data/
+figures/
+haarcascades/
+src/__pycache__/
+src/web/__pycache__/
+.env
